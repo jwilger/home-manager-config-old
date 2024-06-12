@@ -2,6 +2,7 @@
 {
     home = {
         packages = with pkgs; [
+            home-manager
         ];
 
         username = "jwilger";
