@@ -1,9 +1,14 @@
+SHELL := /bin/zsh
+
 .PHONY: all update clean check-nix
 
-all: check-nix update
+all: check-nix check-home-manager update
 
 check-nix:
 	@command -v nix >/dev/null 2>&1 || { echo >&2 "Installing Nix..."; curl -L https://nixos.org/nix/install | sh -s -- --daemon; }
+
+check-home-manager:
+	@command -v home-manager >/dev/null 2>&1 || { echo >&2 "Installing Home Manager..."; nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager; nix-channel --update; nix-shell '<home-manager>' -A install; echo "source $$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" >> $$HOME/.zprofile; tset; }
 
 update:
 	home-manager switch --flake .#jwilger
