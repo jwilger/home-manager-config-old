@@ -7,16 +7,11 @@
 
         username = "jwilger";
         stateVersion = "23.11";
-    };
 
-    neovim = {
-        enable = true;
-        defaultEditor = true;
-        viAlias = true;
-        vimAlias = true;
-        vimdiffAlias = true;
-        withNodeJs = true;
-        withPython3 = true;
+        sessionVariables = {
+            VISUAL = "nvim";
+            EDITOR = "nvim";
+        };
     };
 
     programs = {
@@ -51,9 +46,6 @@
                 ls="ls -lGh";
                 envs="env | sort";
                 envg="env | grep -i";
-
-                vim="nvim";
-                vi="nvim";
 
                 # Random
                 guid="uuidgen | tr \"[:upper:]\" \"[:lower:]\"";
