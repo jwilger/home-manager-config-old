@@ -38,6 +38,17 @@
                   ./home/gregor.nix
                 ];
             };
+            "jwilger@sierra" = home-manager.lib.homeManagerConfiguration {
+                pkgs = import nixpkgs { system = "aarch64-darwin"; };
+                modules = [
+                  ./home/common.nix
+                  ./home/darwin.nix
+                  {
+                    home.packages = [ nixvim-config.packages."aarch64-darwin".default ];
+                  }
+                  ./home/gregor.nix
+                ];
+            };
         };
     };
 }
