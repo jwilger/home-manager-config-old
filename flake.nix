@@ -10,16 +10,15 @@
         };
     };
 
-    outputs = { nixpkgs, home-manager, ... }:
-        let
-            lib = nixpkgs.lib;
-            system = "aarch64-darwin";
-            pkgs = import nixpkgs { inherit system; };
-        in {
+    outputs = { nixpkgs, home-manager, ... }: {
             homeConfigurations = {
-                jwilger = home-manager.lib.homeManagerConfiguration {
-                    inherit pkgs;
-                    modules = [ ./home.nix ];
+                "jwilger@gregor" = home-manager.lib.homeManagerConfiguration {
+		    pkgs = import nixpkgs { system = "x86_64-linux"; };
+                    modules = [ ./home/common.nix ./home/linux.nix ./home/gregor.nix ];
+                };
+                "jwilger@Sandor" = home-manager.lib.homeManagerConfiguration {
+		    pkgs = import nixpkgs { system = "aarch64-darwin"; };
+                    modules = [ ./home/common.nix ./home/darwin.nix ./home/Sandor.nix ];
                 };
             };
         };
