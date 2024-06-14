@@ -3,6 +3,7 @@
 
     inputs = {
         nixpkgs.url = "nixpkgs/nixos-23.11";
+        flake-utils.url = "github:numtide/flake-utils";
 
         home-manager = {
             url = "github:nix-community/home-manager/release-23.11";
@@ -14,41 +15,27 @@
         };
     };
 
-    outputs = { nixvim-config, nixpkgs, home-manager, ... }: {
-        homeConfigurations = {
-            "jwilger@gregor" = home-manager.lib.homeManagerConfiguration {
-                pkgs = import nixpkgs { system = "x86_64-linux"; };
+    outputs = { nixvim-config, nixpkgs, flake-utils, home-manager, ... } @ inputs:
+        let
+            mkHomeConfig = machineModule: system: home-manager.lib.homeManagerConfiguration {
+                pkgs = import nixpkgs { inherit system; };
                 modules = [
-                  ./home/common.nix
-                  ./home/linux.nix
-                  {
-                    home.packages = [ nixvim-config.packages."x86_64-linux".default ];
-                  }
-                  ./home/gregor.nix
+                    ./home/common.nix
+                    {
+                        home.packages = [ nixvim-config.packages."${system}".default ];
+                    }
+                    machineModule
                 ];
+
+                extraSpecialArgs = {
+                    inherit inputs system;
+                };
             };
-            "jwilger@Sandor" = home-manager.lib.homeManagerConfiguration {
-                pkgs = import nixpkgs { system = "aarch64-darwin"; };
-                modules = [
-                  ./home/common.nix
-                  ./home/darwin.nix
-                  {
-                    home.packages = [ nixvim-config.packages."aarch64-darwin".default ];
-                  }
-                  ./home/gregor.nix
-                ];
-            };
-            "jwilger@sierra" = home-manager.lib.homeManagerConfiguration {
-                pkgs = import nixpkgs { system = "aarch64-darwin"; };
-                modules = [
-                  ./home/common.nix
-                  ./home/darwin.nix
-                  {
-                    home.packages = [ nixvim-config.packages."aarch64-darwin".default ];
-                  }
-                  ./home/gregor.nix
-                ];
+        in {
+            homeConfigurations = {
+                "jwilger@gregor" = mkHomeConfig ./home/linux.nix "x86_64-linux";
+                "jwilger@Sandor" = mkHomeConfig ./home/darwin.nix "aarch64-darwin";
+                "jwilger@sierra" = mkHomeConfig ./home/darwin.nix "aarch64-darwin";
             };
         };
-    };
 }
