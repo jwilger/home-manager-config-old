@@ -17,15 +17,37 @@
         };
     };
 
+    home.file.".ssh/allowed_signers".text = "* ${builtins.readFile /home/jwilger/.ssh/id_ed25519.pub}";
+
     programs = {
+        git = {
+            enable = true;
+              userName = "John Wilger";
+              userEmail = "john@johnwilger.com";
+
+            ignores = [
+              # ignore direv files
+              ".envrc"
+            ];
+            difftastic = { enable = true; };
+
+            extraConfig = {
+              # Sign all commits using ssh key
+              commit.gpgsign = true;
+              gpg.format = "ssh";
+              gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+              merge.conflictstyle = "zdiff3";
+              user.signingkey = "~/.ssh/id_ed25519.pub";
+
+              pull = { ff = "only"; };
+              push = { default = "current"; };
+            };
+        };
+
+
         direnv = {
             enable = true;
             enableZshIntegration = true;
-        };
-        git = {
-            enable = true;
-            userName = "John Wilger";
-            userEmail = "john@johnwilger.com";
         };
         starship = {
             enable = true;
