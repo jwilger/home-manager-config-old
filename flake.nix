@@ -4,6 +4,7 @@
     inputs = {
         nixpkgs.url = "nixpkgs/nixos-23.11";
         flake-utils.url = "github:numtide/flake-utils";
+        _1password-shell-plugins.url = "github:1Password/shell-plugins";
 
         home-manager = {
             url = "github:nix-community/home-manager/release-23.11";
@@ -15,10 +16,10 @@
         };
     };
 
-    outputs = { nixvim-config, nixpkgs, flake-utils, home-manager, ... } @ inputs:
+    outputs = inputs@{ nixvim-config, nixpkgs, flake-utils, home-manager, ... }:
         let
             mkHomeConfig = machineModule: system: home-manager.lib.homeManagerConfiguration {
-                pkgs = import nixpkgs { inherit system; };
+                pkgs = import nixpkgs { inherit system; config = { allowUnfree = true; }; };
                 modules = [
                     ./home/common.nix
                     {
