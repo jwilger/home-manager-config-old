@@ -5,6 +5,9 @@
             home-manager
             powerline
             powerline-fonts
+            git-crypt
+            _1password
+            _1password-gui
         ];
 
         username = "jwilger";
@@ -44,7 +47,6 @@
             difftastic = { enable = true; };
 
             extraConfig = {
-              # Sign all commits using ssh key
               commit.gpgsign = true;
               merge.conflictstyle = "zdiff3";
               user.signingkey = "8A978D837C6A13DC";
@@ -153,7 +155,6 @@
                     "mix"
                     "pyenv"
                     "gpg-agent"
-                    "ssh-agent"
                 ];
             };
             plugins = [
