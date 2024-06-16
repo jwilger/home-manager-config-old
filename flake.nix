@@ -23,7 +23,7 @@
                 modules = [
                     ./home/common.nix
                     {
-                        home.packages = [ nixvim-config.packages."${system}".default ];
+                        home.packages = [ nixvim-config.packages."${system}".default  ];
                     }
                     machineModule
                 ];

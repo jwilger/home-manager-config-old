@@ -2,7 +2,6 @@
 {
     home = {
         packages = with pkgs; [
-            home-manager
             powerline
             powerline-fonts
             git-crypt
@@ -48,9 +47,19 @@
             mutableTrust = true;
         };
 
+        home-manager = {
+            enable = true;
+        };
+
         direnv = {
             enable = true;
             enableZshIntegration = true;
+        };
+        ssh = {
+            enable = true;
+            compression = true;
+            forwardAgent = true;
+            controlMaster = "yes";
         };
         starship = {
             enable = true;
