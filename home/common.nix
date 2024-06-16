@@ -35,6 +35,7 @@
               commit.gpgsign = true;
               merge.conflictstyle = "zdiff3";
               user.signingkey = "8A978D837C6A13DC";
+              log.showSignature = true;
 
               pull = { ff = "only"; };
               push = { default = "current"; };
