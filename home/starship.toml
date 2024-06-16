@@ -4,8 +4,8 @@ format = "$character"
 right_format = """
 [](color_orange)\
 $os\
-$hostname\
 $username\
+$hostname\
 [](bg:color_yellow fg:color_orange)\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
@@ -41,7 +41,7 @@ color_red = '#cc241d'
 color_yellow = '#d79921'
 
 [os]
-disabled = false
+disabled = true
 style = "bg:color_orange fg:color_fg0"
 
 [os.symbols]
@@ -68,12 +68,13 @@ RedHatEnterprise = "󱄛"
 [hostname]
 disabled = false
 style = "bg:color_orange fg:color_fg0"
-format = '[ $hostname ]($style)'
+format = '[$ssh_symbol($hostname) ]($style)'
+ssh_symbol = '@'
 
 [username]
 style_user = "bg:color_orange fg:color_fg0"
 style_root = "bg:color_orange fg:color_fg0"
-format = '[ $user ]($style)'
+format = '[ ☁️  $user]($style)'
 
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
@@ -99,8 +100,8 @@ format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
 
 [elixir]
 style = "bg:color_blue"
-format = '[[ $symbol($version \(OTP $otp_version\) )](fg:color_fg0 bg:color_blue)]($style)'
-symbol = "𝞴"
+format = '[[ $symbol( $version \(OTP $otp_version\) )](fg:color_fg0 bg:color_blue)]($style)'
+symbol = "◉"
 
 [nodejs]
 symbol = ""
