@@ -32,13 +32,14 @@
             difftastic = { enable = true; };
 
             extraConfig = {
-              commit.gpgsign = true;
-              merge.conflictstyle = "zdiff3";
-              user.signingkey = "8A978D837C6A13DC";
-              log.showSignature = true;
+                gpg.format = "ssh";
+                commit.gpgsign = true;
+                merge.conflictstyle = "zdiff3";
+                user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDonsmPpmdFGbXwVP1mIj+4VOgrifXlgYF8+N1pTRz17";
+                log.showSignature = true;
 
-              pull = { ff = "only"; };
-              push = { default = "current"; };
+                pull = { ff = "only"; };
+                push = { default = "current"; };
             };
         };
 
