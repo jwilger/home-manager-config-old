@@ -14,7 +14,12 @@ update:
 	home-manager switch --flake .
 
 import-gpg-key:
-	eval $(op signin --account my) && op document get "Personal GPG Key" | base64 --decode | gpg --import --allow-secret-key-import --import-options restore
+	eval $$(op signin --account my) && \
+	KEY_DATA=$$(op document get "Personal GPG Key" | base64 --decode) && \
+	KEY_ID=$$(echo "$$KEY_DATA" | gpg --list-packets 2>/dev/null | awk '$$1=="keyid:"{print $$2; exit}') && \
+	echo "$$KEY_DATA" | gpg --import --allow-secret-key-import --import-options restore && \
+	(echo 5; echo y; echo save) | gpg --command-fd 0 --no-tty --no-greeting -q --edit-key "$$KEY_ID" trust
 
 clean:
 	nix-collect-garbage -d
+
