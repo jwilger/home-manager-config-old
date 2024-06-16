@@ -16,7 +16,7 @@
         };
     };
 
-    outputs = inputs@{ nixvim-config, nixpkgs, flake-utils, home-manager, ... }:
+    outputs = inputs@{ nixvim-config, nixpkgs,  home-manager, ... }:
         let
             mkHomeConfig = machineModule: system: home-manager.lib.homeManagerConfiguration {
                 pkgs = import nixpkgs { inherit system; config = { allowUnfree = true; }; };

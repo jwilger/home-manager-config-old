@@ -1,5 +1,6 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
+    news.display = "silent";
     home = {
         packages = with pkgs; [
             powerline
