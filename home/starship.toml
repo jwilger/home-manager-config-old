@@ -1,16 +1,17 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = """
+format = "$character"
+right_format = """
 [](color_orange)\
 $os\
 $hostname\
 $username\
-[](bg:color_yellow fg:color_orange)\
+[](bg:color_yellow fg:color_orange)\
 $directory\
-[](fg:color_yellow bg:color_aqua)\
+[](fg:color_yellow bg:color_aqua)\
 $git_branch\
 $git_status\
-[](fg:color_aqua bg:color_blue)\
+[](fg:color_aqua bg:color_blue)\
 $c\
 $rust\
 $golang\
@@ -20,12 +21,9 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:color_blue bg:color_bg3)\
+[](fg:color_blue bg:color_bg3)\
 $docker_context\
-[](fg:color_bg3 bg:color_bg1)\
-$time\
-[ ](fg:color_bg1)\
-$line_break$character"""
+[ ](fg:color_bg3)"""
 
 palette = 'gruvbox_dark'
 
@@ -144,8 +142,8 @@ disabled = false
 
 [character]
 disabled = false
-success_symbol = '[](bold fg:color_green)'
-error_symbol = '[](bold fg:color_red)'
+success_symbol = '[🤘 ∋](bold fg:color_aqua)'
+error_symbol = '[🤔 ∋](bold fg:color_red)'
 vimcmd_symbol = '[](bold fg:color_green)'
 vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
 vimcmd_replace_symbol = '[](bold fg:color_purple)'
