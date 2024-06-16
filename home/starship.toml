@@ -12,10 +12,11 @@ $directory\
 $git_branch\
 $git_status\
 [](fg:color_aqua bg:color_blue)\
+$elixir\
+$nodejs\
 $c\
 $rust\
 $golang\
-$nodejs\
 $php\
 $java\
 $kotlin\
@@ -98,8 +99,8 @@ format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
 
 [elixir]
 style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-# symbol = ""
+format = '[[ $symbol($version \(OTP $otp_version\) )](fg:color_fg0 bg:color_blue)]($style)'
+symbol = "𝞴"
 
 [nodejs]
 symbol = ""
@@ -138,7 +139,7 @@ style = "bg:color_bg1"
 format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
 
 [line_break]
-disabled = false
+disabled = true
 
 [character]
 disabled = false
