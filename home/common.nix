@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
     news.display = "silent";
     home = {
@@ -34,6 +34,7 @@
 
             extraConfig = {
                 gpg.format = "ssh";
+                gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/${config.xdg.configFile."ssh/allowed_signers".target}";
                 commit.gpgsign = true;
                 merge.conflictstyle = "zdiff3";
                 user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDonsmPpmdFGbXwVP1mIj+4VOgrifXlgYF8+N1pTRz17";
@@ -197,4 +198,10 @@
     };
 
     xdg.configFile."starship.toml".source = ./starship.toml;
+
+    xdg.configFile."ssh/allowed_signers".text = ''
+    john@johnwilger.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDonsmPpmdFGbXwVP1mIj+4VOgrifXlgYF8+N1pTRz17
+    johnwilger@artium.ai ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDonsmPpmdFGbXwVP1mIj+4VOgrifXlgYF8+N1pTRz17
+
+    '';
 }

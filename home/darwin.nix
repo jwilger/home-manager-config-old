@@ -8,9 +8,7 @@
     programs = {
         git = {
             extraConfig = {
-                "gpg \"ssh\"" = {
-                    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-                };
+                gpg.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
             };
         };
 
