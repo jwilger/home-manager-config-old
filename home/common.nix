@@ -3,6 +3,16 @@
     news.display = "silent";
     home = {
         packages = with pkgs; [
+            neovim
+            tree-sitter
+            ripgrep
+            lazygit
+            gdu
+            bottom
+            python312
+            python312Packages.pynvim
+            nodePackages.nodejs
+            nodePackages.neovim
             powerline
             powerline-fonts
             git-crypt
@@ -190,6 +200,10 @@
 
                 # GitHub CLI
                 ghr="gh run watch";
+
+		# Neovim
+		vi="nvim";
+		vim="nvim";
             };
             syntaxHighlighting = {
                 enable = true;

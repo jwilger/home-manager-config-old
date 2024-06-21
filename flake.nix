@@ -2,29 +2,22 @@
     description = "My Home Manager configuration";
 
     inputs = {
-        nixpkgs.url = "nixpkgs/nixos-23.11";
+        nixpkgs.url = "nixpkgs/nixpkgs-unstable";
         flake-utils.url = "github:numtide/flake-utils";
         _1password-shell-plugins.url = "github:1Password/shell-plugins";
 
         home-manager = {
-            url = "github:nix-community/home-manager/release-23.11";
+            url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        nixvim-config = {
-            url = "github:jwilger/nixvim-config";
         };
     };
 
-    outputs = inputs@{ nixvim-config, nixpkgs,  home-manager, ... }:
+    outputs = inputs@{ nixpkgs,  home-manager, ... }:
         let
             mkHomeConfig = machineModule: system: home-manager.lib.homeManagerConfiguration {
                 pkgs = import nixpkgs { inherit system; config = { allowUnfree = true; }; };
                 modules = [
                     ./home/common.nix
-                    {
-                        home.packages = [ nixvim-config.packages."${system}".default  ];
-                    }
                     machineModule
                 ];
 
