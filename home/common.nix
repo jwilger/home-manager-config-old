@@ -18,6 +18,7 @@
             git-crypt
             _1password
             _1password-gui
+            go
         ];
 
         username = "jwilger";
