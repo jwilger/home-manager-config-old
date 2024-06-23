@@ -29,6 +29,19 @@
             EDITOR = "nvim";
             NIX_BUILD_SHELL = "zsh";
         };
+        
+        file.".zlogin".text = ''
+        echo "Welcome, ''${USER}!"
+        if [ ! -e "/tmp/ssh-agent.''${USER}" ]; then
+    	    if [ -n "''${ZSH_VERSION}" ]; then
+        	    eval ~/.nix-profile/bin/ssh-agent-switcher 2>/dev/null "&!"
+    	    else
+        	    ~/.nix-profile/bin/ssh-agent-switcher 2>/dev/null &
+        	    disown 2>/dev/null || true
+    	    fi
+	    fi
+	    export SSH_AUTH_SOCK="/tmp/ssh-agent.''${USER}" 
+        '';
     };
 
     programs = {
@@ -164,7 +177,7 @@
                     "direnv"
                     "mix"
                     "pyenv"
-                    "gpg-agent"
+                    # "gpg-agent"
                 ];
             };
             plugins = [
@@ -219,4 +232,5 @@
     johnwilger@artium.ai ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDonsmPpmdFGbXwVP1mIj+4VOgrifXlgYF8+N1pTRz17
 
     '';
+
 }
