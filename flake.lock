@@ -80,11 +80,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1719037157,
-        "narHash": "sha256-aOKd8+mhBsLQChCu1mn/W5ww79ta5cXVE59aJFrifM8=",
+        "lastModified": 1720289319,
+        "narHash": "sha256-E3CjSsXNDWYqoNjrKQLPdEZDLR+mVI9HMa+jY//FjBY=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "cd886711998fe5d9ff7979fdd4b4cbd17b1f1511",
+        "rev": "10486e6b311b3c5ae1c3477fee058704cea7cb4a",
         "type": "github"
       },
       "original": {
@@ -111,11 +111,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1719082008,
-        "narHash": "sha256-jHJSUH619zBQ6WdC21fFAlDxHErKVDJ5fpN0Hgx4sjs=",
+        "lastModified": 1720181791,
+        "narHash": "sha256-i4vJL12/AdyuQuviMMd1Hk2tsGt02hDNhA0Zj1m16N8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9693852a2070b398ee123a329e68f0dab5526681",
+        "rev": "4284c2b73c8bce4b46a6adf23e16d9e2ec8da4bb",
         "type": "github"
       },
       "original": {
@@ -143,11 +143,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-Pm9uFPZ0JiWrj2pA/5qFPficKW6QCt8Fh/zK7ox7wds=",
-        "path": "/nix/store/izgxgzfqd3rkphar60bbwlsbn9gd7219-source/ssh-agent-switcher",
+        "path": "/nix/store/bqn5f2v72cf940xsc3pla7z8w7xp55c3-source/ssh-agent-switcher",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/izgxgzfqd3rkphar60bbwlsbn9gd7219-source/ssh-agent-switcher",
+        "path": "/nix/store/bqn5f2v72cf940xsc3pla7z8w7xp55c3-source/ssh-agent-switcher",
         "type": "path"
       }
     },
