@@ -143,11 +143,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-Pm9uFPZ0JiWrj2pA/5qFPficKW6QCt8Fh/zK7ox7wds=",
-        "path": "/nix/store/bqn5f2v72cf940xsc3pla7z8w7xp55c3-source/ssh-agent-switcher",
+        "path": "/nix/store/wdcx5ipvf33yk06gacl76bv8g1l5nzhh-source/ssh-agent-switcher",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/bqn5f2v72cf940xsc3pla7z8w7xp55c3-source/ssh-agent-switcher",
+        "path": "/nix/store/wdcx5ipvf33yk06gacl76bv8g1l5nzhh-source/ssh-agent-switcher",
         "type": "path"
       }
     },
