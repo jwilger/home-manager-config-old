@@ -73,6 +73,8 @@
         }";
         commit.gpgsign = true;
         merge.conflictstyle = "zdiff3";
+        merge.tool = "nvimdiff";
+        diff.tool = "nvimdiff";
         user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDonsmPpmdFGbXwVP1mIj+4VOgrifXlgYF8+N1pTRz17";
         log.showSignature = true;
 
