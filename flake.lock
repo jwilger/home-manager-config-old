@@ -112,11 +112,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1720691131,
-        "narHash": "sha256-CWT+KN8aTPyMIx8P303gsVxUnkinIz0a/Cmasz1jyIM=",
+        "lastModified": 1721686456,
+        "narHash": "sha256-nw/BnNzATDPfzpJVTnY8mcSKKsz6BJMEFRkJ332QSN0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a046c1202e11b62cbede5385ba64908feb7bfac4",
+        "rev": "575f3027caa1e291d24f1e9fb0e3a19c2f26d96b",
         "type": "github"
       },
       "original": {
@@ -144,11 +144,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-Ayo/tRB/i118SPv8rtao4ZBtHgGrNw7Igf0vENizpag=",
-        "path": "/nix/store/iqj1n87q4mf9ibqb9qa7nv9j2yn38h7n-source/ssh-agent-switcher",
+        "path": "/nix/store/nsv7a6brfcw55b82h4cs3a11cn1ykvv7-source/ssh-agent-switcher",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/iqj1n87q4mf9ibqb9qa7nv9j2yn38h7n-source/ssh-agent-switcher",
+        "path": "/nix/store/nsv7a6brfcw55b82h4cs3a11cn1ykvv7-source/ssh-agent-switcher",
         "type": "path"
       }
     },
