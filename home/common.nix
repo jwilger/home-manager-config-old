@@ -61,6 +61,7 @@
       ignores = [
         # ignore direv files
         ".envrc"
+        ".direnv/"
       ];
       difftastic = {
         enable = true;
