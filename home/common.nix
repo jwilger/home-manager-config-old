@@ -1,11 +1,12 @@
 { pkgs, config, ... }:
 {
+  targets.genericLinux.enable = true;
+  fonts.fontconfig.enable = true;
   news.display = "silent";
   home = {
     packages = with pkgs; [
       neovim
       tree-sitter
-      ripgrep
       gdu
       bottom
       python312
@@ -17,7 +18,12 @@
       git-crypt
       _1password
       _1password-gui
+      gcc
+      gnumake
       go
+      cargo
+      nerdfonts
+      noto-fonts-color-emoji
     ];
 
     username = "jwilger";
@@ -40,6 +46,7 @@
       	    fi
       	    export SSH_AUTH_SOCK="/tmp/ssh-agent.''${USER}" 
     '';
+
   };
 
   programs = {
@@ -76,7 +83,8 @@
         merge.conflictstyle = "zdiff3";
         merge.tool = "nvimdiff";
         diff.tool = "nvimdiff";
-        user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDonsmPpmdFGbXwVP1mIj+4VOgrifXlgYF8+N1pTRz17";
+        user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGwXlUIgMZDNewfvIyX5Gd1B1dIuLT7lH6N+2+FrSaSU";
+        gpg.ssh.program = "op-ssh-sign";
         log.showSignature = true;
 
         pull = {
@@ -107,6 +115,10 @@
       compression = true;
       forwardAgent = true;
       controlMaster = "yes";
+      extraConfig = ''
+        Host *
+          IdentityAgent ~/.1password/agent.sock
+      '';
     };
     starship = {
       enable = true;
@@ -253,4 +265,13 @@
 
   '';
 
+  xdg.configFile."fontconfig/conf.d/10-nix-fonts.conf".text = ''
+    <?xml version='1.0'?>
+    <!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+    <fontconfig>
+      <dir>~/.nix-profile/share/fonts/</dir>
+    </fontconfig>
+  '';
+
+  xdg.configFile."kitty/kitty.conf".source = ./kitty.conf;
 }

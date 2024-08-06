@@ -1,49 +1,38 @@
 {
-  description = "My Home Manager configuration";
+  description = "Home Manager configuration of jwilger";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.05";
-    flake-utils.url = "github:numtide/flake-utils";
-    _1password-shell-plugins.url = "github:1Password/shell-plugins";
-
+    # Specify the source of Home Manager and Nixpkgs.
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ssh-agent-switcher = {
       url = "./ssh-agent-switcher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs =
-    inputs@{
-      nixpkgs,
-      home-manager,
-      ssh-agent-switcher,
-      ...
-    }:
-    let
-      mkHomeConfig =
-        machineModule: system:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            inherit system;
-            config = {
-              allowUnfree = true;
-            };
-          };
-          modules = [
-            ./home/common.nix
-            machineModule
-            { home.packages = [ ssh-agent-switcher.packages.${system}.ssh-agent-switcher ]; }
-          ];
-
-          extraSpecialArgs = {
-            inherit inputs system;
+  outputs = inputs@{ nixpkgs, home-manager, ssh-agent-switcher, ... }:
+    let mkHomeConfig =
+      machineModule: system:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
           };
         };
+        modules = [
+          ./home/common.nix
+          machineModule
+          { home.packages = [ ssh-agent-switcher.packages.${system}.ssh-agent-switcher ]; }
+        ];
+        extraSpecialArgs = {
+          inherit inputs system;
+        };
+      };
     in
     {
       homeConfigurations = {
