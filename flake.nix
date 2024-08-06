@@ -15,24 +15,25 @@
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ssh-agent-switcher, ... }:
-    let mkHomeConfig =
-      machineModule: system:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          inherit system;
-          config = {
-            allowUnfree = true;
+    let
+      mkHomeConfig =
+        machineModule: system:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            inherit system;
+            config = {
+              allowUnfree = true;
+            };
+          };
+          modules = [
+            ./home/common.nix
+            machineModule
+            { home.packages = [ ssh-agent-switcher.packages.${system}.ssh-agent-switcher ]; }
+          ];
+          extraSpecialArgs = {
+            inherit inputs system;
           };
         };
-        modules = [
-          ./home/common.nix
-          machineModule
-          { home.packages = [ ssh-agent-switcher.packages.${system}.ssh-agent-switcher ]; }
-        ];
-        extraSpecialArgs = {
-          inherit inputs system;
-        };
-      };
     in
     {
       homeConfigurations = {

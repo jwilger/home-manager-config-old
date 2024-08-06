@@ -3,6 +3,7 @@
   targets.genericLinux.enable = true;
   fonts.fontconfig.enable = true;
   news.display = "silent";
+
   home = {
     packages = with pkgs; [
       neovim
@@ -100,6 +101,15 @@
       enable = true;
       mutableKeys = true;
       mutableTrust = true;
+      publicKeys = [
+        {
+          source = builtins.fetchurl {
+            url = "https://github.com/web-flow.gpg";
+            sha256 = "117gldk49gc76y7wqq6a4kjgkrlmdsrb33qw2l1z9wqcys3zd2kf";
+          };
+          trust = 4;
+        }
+      ];
     };
 
     home-manager = {
