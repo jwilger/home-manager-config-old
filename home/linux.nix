@@ -3,6 +3,7 @@
   home = {
     homeDirectory = "/home/jwilger";
     stateVersion = "23.11";
+    packages = with pkgs; [ ];
   };
 
   services = {
@@ -13,6 +14,49 @@
       extraConfig = ''
         allow-preset-passphrase
       '';
+    };
+    dunst = {
+      enable = true;
+    };
+  };
+
+  programs = {
+    i3status-rust = {
+      enable = true;
+      bars = {
+        default = {
+          theme = "ctp-macchiato";
+          icons = "awesome6";
+          blocks = [
+            { block = "net"; }
+            {
+              block = "disk_space";
+              path = "/";
+              info_type = "used";
+              format = " $icon $percentage ";
+              alert = 50;
+              warning = 40;
+            }
+            {
+              block = "memory";
+              format = " $icon $mem_used_percents ";
+              format_alt = " $icon $swap_used_percents ";
+            }
+            {
+              block = "notify";
+              driver = "dunst";
+            }
+            {
+              block = "sound";
+              driver = "pulseaudio";
+            }
+            {
+              block = "time";
+              format = " $icon $timestamp.datetime(f:'%D %R')   ";
+            }
+          ];
+        };
+      };
     };
   };
 
