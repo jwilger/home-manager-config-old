@@ -3,29 +3,40 @@
   targets.genericLinux.enable = true;
   fonts.fontconfig.enable = true;
   news.display = "silent";
+  catppuccin =
+    {
+
+      enable = true;
+      accent = "pink";
+      flavor = "macchiato";
+      pointerCursor = {
+        enable = true;
+      };
+    };
 
   home = {
-    packages = with pkgs; [
-      neovim
-      tree-sitter
-      gdu
-      bottom
-      python312
-      python312Packages.pynvim
-      nodePackages.nodejs
-      nodePackages.neovim
-      powerline
-      powerline-fonts
-      git-crypt
-      _1password
-      _1password-gui
-      gcc
-      gnumake
-      go
-      cargo
-      nerdfonts
-      noto-fonts-color-emoji
-    ];
+    packages = with pkgs;
+      [
+        neovim
+        tree-sitter
+        gdu
+        bottom
+        python312
+        python312Packages.pynvim
+        nodePackages.nodejs
+        nodePackages.neovim
+        powerline
+        powerline-fonts
+        git-crypt
+        _1password
+        _1password-gui
+        gcc
+        gnumake
+        go
+        cargo
+        nerdfonts
+        noto-fonts-color-emoji
+      ];
 
     username = "jwilger";
     stateVersion = "23.11";
@@ -78,8 +89,8 @@
       extraConfig = {
         gpg.format = "ssh";
         gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/${
-          config.xdg.configFile."ssh/allowed_signers".target
-        }";
+config.xdg.configFile."ssh/allowed_signers".target
+}";
         commit.gpgsign = true;
         merge.conflictstyle = "zdiff3";
         merge.tool = "nvimdiff";
@@ -134,6 +145,151 @@
     starship = {
       enable = true;
       enableZshIntegration = true;
+      settings = {
+        format = "[╭╴](fg:#505050)$os$username$hostname$sudo$directory$git_branch$git_commit$git_state$git_metrics$git_status$jobs$memory_usage[ ](fg:#242424)$cmd_duration$fill$line_break[╰╴](fg:#505050)[$status $localip $character]($style)";
+        add_newline = true;
+        os = {
+          format = "[$symbol ]($style)[ ]()";
+          style = "fg:#AAAAAA";
+          disabled = false;
+          symbols = {
+            Alpine = "";
+            Amazon = "";
+            Android = "";
+            Arch = "";
+            CentOS = "";
+            Debian = "";
+            DragonFly = "🐉";
+            Emscripten = "🔗";
+            EndeavourOS = "";
+            Fedora = "";
+            FreeBSD = "";
+            Garuda = "";
+            Gentoo = "";
+            HardenedBSD = "聯";
+            Illumos = "🐦";
+            Linux = "";
+            Macos = "";
+            Manjaro = "";
+            Mariner = "";
+            MidnightBSD = "🌘";
+            Mint = "";
+            NetBSD = "";
+            NixOS = "";
+            OpenBSD = "";
+            OpenCloudOS = "☁️";
+            openEuler = "";
+            openSUSE = "";
+            OracleLinux = "⊂⊃";
+            Pop = "";
+            Raspbian = "";
+            Redhat = "";
+            RedHatEnterprise = "";
+            Redox = "🧪";
+            Solus = "";
+            SUSE = "";
+            Ubuntu = "";
+            Unknown = "";
+            Windows = "";
+          };
+        };
+        username = {
+          format = "[ ](fg:green bold)[$user]($style)[ ]()";
+          style_user = "fg:green bold";
+          style_root = "fg:red bold";
+          show_always = false;
+          disabled = false;
+        };
+        hostname = {
+          format = "[$ssh_symbol ](fg:green bold)[$hostname](fg:green bold)[ ]()";
+          ssh_only = true;
+          ssh_symbol = "";
+          disabled = false;
+        };
+        directory = {
+          format = "[ ](fg:cyan bold)[$read_only]($read_only_style)[$repo_root]($repo_root_style)[$path]($style)";
+          style = "fg:cyan bold";
+          home_symbol = " ~";
+          read_only = " ";
+          read_only_style = "fg:cyan";
+          truncation_length = 3;
+          truncation_symbol = "…/";
+          truncate_to_repo = true;
+          repo_root_format = "[ ](fg:cyan bold)[$read_only]($read_only_style)[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[ ]()";
+          repo_root_style = "fg:cyan bold";
+          use_os_path_sep = true;
+          disabled = false;
+        };
+        git_branch = {
+          format = "[❯ $symbol $branch(:$remote_branch)]($style)[ ]()";
+          style = "fg:#E04D27";
+        };
+        git_commit = {
+          format = "[\($hash$tag\)]($style)[ ]()";
+          style = "fg:#E04D27";
+          commit_hash_length = 8;
+          tag_symbol = " ";
+          disabled = false;
+        };
+        git_metrics = {
+          format = "[[+\${added}/](\${added_style})[-\${deleted}](\${deleted_style})[  ]()]()";
+          added_style = "fg:#E04D27";
+          deleted_style = "fg:#E04D27";
+          disabled = false;
+        };
+        git_status = {
+          format = "([$all_status$ahead_behind]($style))";
+          style = "fg:#E04D27";
+          conflicted = "[  \${count} ](fg:red)";
+          ahead = "[ ⇡ \${count} ](fg:yellow)";
+          behind = "[ ⇣ \${count} ](fg:yellow)";
+          diverged = "[ ⇕ \${ahead_count}⇡ \${behind_count}⇣ ](fg:yellow)";
+          up_to_date = "[ ✓ ](fg:green)";
+          untracked = "[ ﳇ \${count} ](fg:red)";
+          stashed = "[  \${count} ](fg:#A52A2A)";
+          modified = "[  \${count} ](fg:#C8AC00)";
+          staged = "[  \${count} ](fg:green)";
+          renamed = "[ ᴂ \${count} ](fg:yellow)";
+          deleted = "[ 🗑 \${count} ](fg:orange)";
+          disabled = false;
+        };
+        jobs = {
+          format = "[  ](fg:blue bold)[$number$symbol]($style)";
+          style = "fg:blue";
+          symbol = "省";
+          symbol_threshold = 1;
+          number_threshold = 4;
+          disabled = false;
+        };
+        memory_usage = {
+          format = "[  ](fg:purple bold)[$symbol \${ram} \${swap}]($style)";
+          style = "fg:purple";
+          symbol = "﬙ 北";
+          threshold = 75;
+          disabled = false;
+        };
+        cmd_duration = {
+          format = "[  $duration ]($style)";
+          style = "fg:yellow";
+          min_time = 500;
+          disabled = false;
+        };
+        fill = {
+          style = "fg:#505050";
+          symbol = "─";
+        };
+        status = {
+          format = "[$symbol$status $hex_status  $signal_number-$signal_name ]($style)";
+          style = "fg:red";
+          symbol = "✘ ";
+          disabled = false;
+        };
+        localip = {
+          format = "[$localipv4 ](fg:green bold)";
+          ssh_only = true;
+          disabled = true;
+        };
+      };
     };
     tmux = {
       aggressiveResize = true;
@@ -266,9 +422,14 @@
         enable = true;
       };
     };
+    kitty = {
+      enable = true;
+      font = {
+        name = "JetBrainsMono Nerd Font";
+        size = 10.0;
+      };
+    };
   };
-
-  xdg.configFile."starship.toml".source = ./starship.toml;
 
   xdg.configFile."ssh/allowed_signers".text = ''
     john@johnwilger.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGwXlUIgMZDNewfvIyX5Gd1B1dIuLT7lH6N+2+FrSaSU
@@ -282,6 +443,4 @@
       <dir>~/.nix-profile/share/fonts/</dir>
     </fontconfig>
   '';
-
-  xdg.configFile."kitty/kitty.conf".source = ./kitty.conf;
 }

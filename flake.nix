@@ -12,9 +12,13 @@
       url = "./ssh-agent-switcher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ssh-agent-switcher, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, ssh-agent-switcher, catppuccin, ... }:
     let
       mkHomeConfig =
         machineModule: system:
@@ -29,6 +33,7 @@
             ./home/common.nix
             machineModule
             { home.packages = [ ssh-agent-switcher.packages.${system}.ssh-agent-switcher ]; }
+            catppuccin.homeManagerModules.catppuccin
           ];
           extraSpecialArgs = {
             inherit inputs system;
