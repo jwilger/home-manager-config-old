@@ -44,7 +44,7 @@
     sessionVariables = {
       NIX_BUILD_SHELL = "zsh";
       EDITOR = "nvim";
-      SSH_AUTH_SOCK = "~/.1password/agent.sock";
+      SSH_AUTH_SOCK = "/home/jwilger/.1password/agent.sock";
     };
 
     file.".zlogin".text = ''
