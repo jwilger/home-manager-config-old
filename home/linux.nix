@@ -3,7 +3,9 @@
   home = {
     homeDirectory = "/home/jwilger";
     stateVersion = "23.11";
-    packages = with pkgs; [ ];
+    packages = with pkgs; [
+      realvnc-vnc-viewer
+    ];
   };
 
   services = {
