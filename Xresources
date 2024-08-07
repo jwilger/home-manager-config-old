@@ -1,4 +1,4 @@
-regolith.look.path: /usr/share/regolith-look/nord
-wm.program.terminal: kitty
+regolith.look.path: ~/.config/regolith-look/Catppuccin-Macchiato-Standard-Pink-Dark
+wm.program.terminal: nixGL kitty
 wm.program.browser: google-chrome-stable
 wm.bar.status_config: ~/.config/i3status-rust/config-default.toml
