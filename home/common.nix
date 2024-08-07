@@ -44,6 +44,7 @@
     sessionVariables = {
       NIX_BUILD_SHELL = "zsh";
       EDITOR = "nvim";
+      SSH_AUTH_SOCK = "~/.1password/agent.sock";
     };
 
     file.".zlogin".text = ''
@@ -137,10 +138,6 @@ config.xdg.configFile."ssh/allowed_signers".target
       compression = true;
       forwardAgent = true;
       controlMaster = "yes";
-      extraConfig = ''
-        Host *
-          IdentityAgent ~/.1password/agent.sock
-      '';
     };
     starship = {
       enable = true;
