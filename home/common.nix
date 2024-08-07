@@ -36,6 +36,8 @@
         cargo
         nerdfonts
         noto-fonts-color-emoji
+        slack
+        ripgrep
       ];
 
     username = "jwilger";
