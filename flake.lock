@@ -40,11 +40,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722936497,
-        "narHash": "sha256-UBst8PkhY0kqTgdKiR8MtTBt4c1XmjJoOV11efjsC/o=",
+        "lastModified": 1723015306,
+        "narHash": "sha256-jQnFEtH20/OsDPpx71ntZzGdRlpXhUENSQCGTjn//NA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "a6c743980e23f4cef6c2a377f9ffab506568413a",
+        "rev": "b3d5ea65d88d67d4ec578ed11d4d2d51e3de525e",
         "type": "github"
       },
       "original": {
@@ -86,17 +86,17 @@
       },
       "locked": {
         "dir": "ssh-agent-switcher",
-        "dirtyRev": "ee04c6fd2262e44f86022839a1eeccaafb2b8bff-dirty",
-        "dirtyShortRev": "ee04c6f-dirty",
-        "lastModified": 1723041688,
-        "narHash": "sha256-1kk+bnd+8lrd1lwz10gEPJOt+iiZXHNY0+m6P0d0peM=",
+        "dirtyRev": "9d793ef972e1588bdb5f76f4c49eb9933e5c3dbf-dirty",
+        "dirtyShortRev": "9d793ef-dirty",
+        "lastModified": 1723042120,
+        "narHash": "sha256-9t+Rpt8/A8lWqTpMLdmEjEKFOHM5m2IopCToq8GfVoI=",
         "type": "git",
-        "url": "file:///nix/store/qr1iavk3j51nm6l2xvlp93slxbvxcd5p-source?dir=ssh-agent-switcher"
+        "url": "file:///nix/store/arpjp9bc0br4q9c6j2ba0wqf555zqqd0-source?dir=ssh-agent-switcher"
       },
       "original": {
         "dir": "ssh-agent-switcher",
         "type": "git",
-        "url": "file:///nix/store/qr1iavk3j51nm6l2xvlp93slxbvxcd5p-source?dir=ssh-agent-switcher"
+        "url": "file:///nix/store/arpjp9bc0br4q9c6j2ba0wqf555zqqd0-source?dir=ssh-agent-switcher"
       }
     },
     "systems": {

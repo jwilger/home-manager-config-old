@@ -1,3 +1,5 @@
+#include "/usr/share/regolith-look/catppuccin-macchiato/root"
+
 regolith.look: catppuccin-macchiato
 regolith.look.path: ~/.config/regolith-look/catppuccin-macchiato
 wm.program.terminal: nixGL kitty
@@ -6,3 +8,7 @@ wm.bar.status_config: ~/.config/i3status-rust/config-default.toml
 gtk.theme_name: Catppuccin-Macchiato-Standard-Dark-Pink
 gtk.icon_theme_name: Catppuccin-Macchiato
 wm.bar.tray_padding: 10
+
+wm.client.unfocused.color.child_border: color_surface0
+wm.client.focused_inactive.color.child_border: color_surface0
+wm.client.focused_inactive.color.border: color_surface0
