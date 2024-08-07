@@ -1,4 +1,8 @@
-regolith.look.path: ~/.config/regolith-look/Catppuccin-Macchiato-Standard-Pink-Dark
+regolith.look: catppuccin-macchiato
+regolith.look.path: ~/.config/regolith-look/catppuccin-macchiato
 wm.program.terminal: nixGL kitty
 wm.program.browser: google-chrome-stable
 wm.bar.status_config: ~/.config/i3status-rust/config-default.toml
+gtk.theme_name: Catppuccin-Macchiato-Standard-Dark-Pink
+gtk.icon_theme_name: Catppuccin-Macchiato
+wm.bar.tray_padding: 10

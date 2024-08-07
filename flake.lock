@@ -86,17 +86,17 @@
       },
       "locked": {
         "dir": "ssh-agent-switcher",
-        "dirtyRev": "0b42681aaea1a29a151de3c879278a90fb9acf53-dirty",
-        "dirtyShortRev": "0b42681-dirty",
-        "lastModified": 1722985940,
-        "narHash": "sha256-cDt3q0RYUIwJB4P5JTFRpkxwixAplY/9wp3Lya2zwUw=",
+        "dirtyRev": "9760191c1c0cffe418e8c01d748f7ddbd8e0c9ac-dirty",
+        "dirtyShortRev": "9760191-dirty",
+        "lastModified": 1722990367,
+        "narHash": "sha256-jPVKdpj6oEa+jv2Sh19/sF2bP4cq2O0MFHDup/cfKxM=",
         "type": "git",
-        "url": "file:///nix/store/nva3iyddjbjjzq9hp1mnnxcv9dsjcw17-source?dir=ssh-agent-switcher"
+        "url": "file:///nix/store/f38svihfa1ng8srcb3x10vmvk2sv7if1-source?dir=ssh-agent-switcher"
       },
       "original": {
         "dir": "ssh-agent-switcher",
         "type": "git",
-        "url": "file:///nix/store/nva3iyddjbjjzq9hp1mnnxcv9dsjcw17-source?dir=ssh-agent-switcher"
+        "url": "file:///nix/store/f38svihfa1ng8srcb3x10vmvk2sv7if1-source?dir=ssh-agent-switcher"
       }
     },
     "systems": {
