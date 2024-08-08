@@ -27,7 +27,16 @@
       enable = true;
       bars = {
         default = {
-          theme = "ctp-macchiato";
+          settings = {
+            theme =
+              {
+                theme = "ctp-macchiato";
+                overrides = {
+                  separator = " ";
+                  end_separator = " ";
+                };
+              };
+          };
           icons = "awesome6";
           blocks = [
             { block = "net"; }
@@ -35,14 +44,14 @@
               block = "disk_space";
               path = "/";
               info_type = "used";
-              format = " $icon $percentage ";
+              format = "$icon $percentage";
               alert = 50;
               warning = 40;
             }
             {
               block = "memory";
-              format = " $icon $mem_used_percents ";
-              format_alt = " $icon $swap_used_percents ";
+              format = "$icon $mem_used_percents";
+              format_alt = "$icon $swap_used_percents";
             }
             {
               block = "notify";
@@ -54,7 +63,7 @@
             }
             {
               block = "time";
-              format = " $icon $timestamp.datetime(f:'%D %R')   ";
+              format = "$icon $timestamp.datetime(f:'%D %R') ";
             }
           ];
         };
