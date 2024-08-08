@@ -7,7 +7,7 @@ wm.program.browser: google-chrome-stable
 wm.bar.status_config: ~/.config/i3status-rust/config-default.toml
 gtk.theme_name: Catppuccin-Macchiato-Standard-Dark-Pink
 gtk.icon_theme_name: Catppuccin-Macchiato
-wm.bar.tray_padding: 10
+wm.bar.tray_padding: 0
 
 wm.client.unfocused.color.child_border: color_surface0
 wm.client.focused_inactive.color.child_border: color_surface0
