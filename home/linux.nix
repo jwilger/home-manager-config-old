@@ -32,8 +32,8 @@
               {
                 theme = "ctp-macchiato";
                 overrides = {
-                  separator = " ";
-                  end_separator = " ";
+                  separator = " ";
+                  end_separator = "  ";
                 };
               };
           };
