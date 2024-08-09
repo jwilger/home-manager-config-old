@@ -427,6 +427,10 @@ config.xdg.configFile."ssh/allowed_signers".target
         name = "JetBrainsMono Nerd Font";
         size = 10.0;
       };
+      settings = {
+        draw_minimal_borders = "yes";
+        hide_window_decorations = "yes";
+      };
     };
   };
 
