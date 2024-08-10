@@ -161,7 +161,7 @@
           layer = "top";
           position = "bottom";
           height = 36;
-          margin-top = 10;
+          margin-top = 5;
           mode = "dock";
           spacing = 20;
 
@@ -674,15 +674,19 @@
       dwindle = {
         pseudotile = true;
         preserve_split = true;
+        no_gaps_when_only = true;
       };
       master = {
         new_status = "master";
+        no_gaps_when_only = true;
       };
       misc = {
+        font_family = "JetBrainsMono Nerd Font";
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = true;
+        focus_on_activate = true;
       };
       cursor = {
         inactive_timeout = 10;
