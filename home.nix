@@ -52,6 +52,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    swaynotificationcenter
     libnotify
     unzip
     neovim
@@ -111,8 +112,6 @@
   #  /etc/profiles/per-user/jwilger/etc/profile.d/hm-session-vars.sh
   #
 
-  services.dunst.enable = true;
-
   services.hypridle = {
     enable = true;
     settings = {
@@ -143,7 +142,123 @@
     };
   };
 
+  services.swaync = {
+    enable = true;
+  };
+
   programs = {
+    waybar = {
+      enable = true;
+      systemd.enable = true;
+      style = ''
+        * {
+          font-size: 16;
+          font-family: "JetBrainsMono Nerd Font";
+        }
+      '';
+      settings = {
+        mainBar = {
+          layer = "top";
+          position = "bottom";
+          height = 36;
+          margin-top = 10;
+          mode = "dock";
+          spacing = 20;
+
+          modules-left = [
+            "hyprland/workspaces"
+            "hyprland/submap"
+          ];
+          modules-center = [
+          ];
+          modules-right = [
+            "cpu"
+            "memory"
+            "disk"
+            "wireplumber"
+            "custom/notification"
+            "tray"
+            "clock"
+          ];
+
+          cpu = {
+            format = "󰻠 {usage}%";
+          };
+
+          memory = {
+            format = " {percentage}%";
+          };
+
+          disk = {
+            format = " {percentage_used}%";
+          };
+
+          wireplumber = {
+            format = " {volume}%";
+            format-muted = " {volume}%";
+            max-volume = 100;
+            on-click = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle";
+          };
+
+          clock = {
+            format = " {:%H:%M}";
+            format-alt = " {:%A, %B %d, %Y (%R)}";
+            tooltip-format = "<tt><small>{calendar}</small></tt>";
+            calendar = {
+              mode = "year";
+              mode-mon-col = 3;
+              weeks-pos = "right";
+              on-scroll = 1;
+              format = {
+                months = "<span color='#ffead3'><b>{}</b></span>";
+                days = "<span color='#ecc69d'><b>{}</b></span>";
+                weeks = "<span color='#99ffdd'><b>{}</b></span>";
+                weedays = "<span color='#ffcc66'><b>{}</b></span>";
+                today = "<span color='#ff6699'><b>{}</b></span>";
+              };
+            };
+            actions = {
+              on-click-right = "mode";
+              on-click-forward = "tz_up";
+              on-click-backward = "tz_down";
+              on-scroll-up = "shift_up";
+              on-scroll-down = "shift_down";
+            };
+          };
+
+          "hyprland/workspaces" = {
+            format = "{icon}";
+          };
+
+          "custom/notification" = {
+            "tooltip" = false;
+            "format" = "{icon} ";
+            "format-icons" = {
+              "notification" = " <span foreground='red'><sup></sup></span>";
+              "none" = " ";
+              "dnd-notification" = " <span foreground='red'><sup></sup></span>";
+              "dnd-none" = "";
+              "inhibited-notification" = " <span foreground='red'><sup></sup></span>";
+              "inhibited-none" = "";
+              "dnd-inhibited-notification" = " <span foreground='red'><sup></sup></span>";
+              "dnd-inhibited-none" = "";
+            };
+            "return-type" = "json";
+            "exec-if" = "which swaync-client";
+            "exec" = "swaync-client -swb";
+            "on-click" = "swaync-client -t -sw";
+            "on-click-right" = "swaync-client -d -sw";
+            "escape" = true;
+          };
+
+          tray = {
+            show-passive-items = true;
+            spacing = 10;
+            icon-size = 21;
+          };
+        };
+      };
+    };
     hyprlock = {
       enable = true;
       settings = {
@@ -531,53 +646,6 @@
         width = 40;
       };
     };
-
-    i3status-rust = {
-      enable = true;
-      bars = {
-        default = {
-          settings = {
-            theme =
-              {
-                theme = "ctp-macchiato";
-                overrides = {
-                  separator = " ";
-                  end_separator = "  ";
-                };
-              };
-          };
-          icons = "awesome6";
-          blocks = [
-            { block = "net"; }
-            {
-              block = "disk_space";
-              path = "/";
-              info_type = "used";
-              format = "$icon $percentage";
-              alert = 50;
-              warning = 40;
-            }
-            {
-              block = "memory";
-              format = "$icon $mem_used_percents";
-              format_alt = "$icon $swap_used_percents";
-            }
-            {
-              block = "notify";
-              driver = "dunst";
-            }
-            {
-              block = "sound";
-              driver = "pulseaudio";
-            }
-            {
-              block = "time";
-              format = "$icon $timestamp.datetime(f:'%D %R') ";
-            }
-          ];
-        };
-      };
-    };
   };
 
   wayland.windowManager.hyprland = {
@@ -588,6 +656,8 @@
 
     settings = {
       exec-once = [
+        "${pkgs.slack}/bin/slack"
+        "${pkgs._1password-gui}/bin/1password"
       ];
       monitor = ",preferred,auto,auto";
       "$terminal" = "kitty";
@@ -599,7 +669,7 @@
       };
       decoration = {
         rounding = 10;
-        dim_inactive = true;
+        dim_inactive = false;
       };
       dwindle = {
         pseudotile = true;
